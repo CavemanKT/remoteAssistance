@@ -14,7 +14,7 @@
 #define PARMTER_SIZE 276
 #define DATA_SIZE 1020
 
-#define IP "192.168.2.26"
+#define IP "192.168.2.251"
 #define PORT 12345
 
 enum MSG_TYPE {

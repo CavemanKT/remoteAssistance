@@ -33,23 +33,19 @@ int main() {
 	SetAESKeyAndIv(g_AES_oldKey, g_AES_oldIv);
 	pubSize = GetPubBuf(&pBuf);
 	
-
+	RECONNECT:
 	successInitSock = InitSock();
 	if (successInitSock == FALSE) {
-		while (true) {
-			printf("waiting for connection from client.. \n");
-			Sleep(2000);
-			printf("still don't get response from client after 2s..\n");
+		printf("waiting for connection from client.. \n");
+		Sleep(1000);
+		printf("still don't get response from client after 2s..\n");
 
-			g_client = InitSock();
-			printf("server.cpp  line 24: g_client: %d\n", g_client);
-			if (g_client == 0) {
-				continue;
-			}
+			
+		printf("server.cpp  line 44: g_client: %d\n", g_client);
+		goto RECONNECT;
 
-			printf("established connection with client.\n");
-			break;
-		}
+		g_client = successInitSock;
+		printf("established connection with client.\n");
 	}
 	UserInputCommand();
 	
