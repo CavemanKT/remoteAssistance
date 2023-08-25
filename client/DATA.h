@@ -9,7 +9,7 @@
 #define CMD_QUIT "QUIT"
 
 
-#define IP "192.168.2.251"
+#define IP "127.0.0.1"
 #define PORT 12345
 
 
